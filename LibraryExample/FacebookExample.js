@@ -1,0 +1,76 @@
+/**
+ * Created by USER on 2017-06-03.
+ */
+import React, {Component} from 'react';
+import {
+    StyleSheet,
+    Text,
+    View,
+    ScrollView,
+} from 'react-native';
+import FacebookTabBar from './FacebookTabBar';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
+import TopScreen from './ViewPager';
+import ParallaxExample from './ParallaxView';
+import PricingCardExample from './SideMenu';
+
+class FbScrollableTabView extends Component{
+    render() {
+        return <ScrollableTabView
+            style={{marginTop: 20, }}
+            initialPage={1}
+            renderTabBar={() => <FacebookTabBar />}
+        >
+            <ScrollView tabLabel="ios-paper" style={styles.tabView}>
+                <View style={styles.card}>
+                    <Text>ViewPager</Text>
+                    <TopScreen/>
+                </View>
+            </ScrollView>
+            <ScrollView tabLabel="ios-people" style={styles.tabView}>
+                <View style={styles.card}>
+                    <Text>Parallax</Text>
+                    <ParallaxExample/>
+                </View>
+            </ScrollView>
+            <ScrollView tabLabel="ios-chatboxes" style={styles.tabView}>
+                <View style={styles.card}>
+                    <Text>Element -- 왜 다른건 잘 안되나요?</Text>
+                    <PricingCardExample/>
+                </View>
+            </ScrollView>
+            <ScrollView tabLabel="ios-notifications" style={styles.tabView}>
+                <View style={styles.card}>
+                    <Text>Notifications</Text>
+                </View>
+            </ScrollView>
+            <ScrollView tabLabel="ios-list" style={styles.tabView}>
+                <View style={styles.card}>
+                    <Text>Other nav</Text>
+                </View>
+            </ScrollView>
+        </ScrollableTabView>;
+    }
+}
+
+const styles = StyleSheet.create({
+    tabView: {
+        flex: 1,
+        padding: 10,
+        backgroundColor: 'rgba(0,0,0,0.01)',
+    },
+    card: {
+        borderWidth: 1,
+        backgroundColor: '#fff',
+        borderColor: 'rgba(0,0,0,0.1)',
+        margin: 5,
+        height: 150,
+        padding: 15,
+        shadowColor: '#ccc',
+        shadowOffset: { width: 2, height: 2, },
+        shadowOpacity: 0.5,
+        shadowRadius: 3,
+    },
+});
+
+export default FbScrollableTabView;
